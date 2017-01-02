@@ -17,10 +17,18 @@ public partial class AddNewAdvert : System.Web.UI.Page
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         SqlConnection connection = new SqlConnection();
-        connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
+        connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
+
         string query = "INSERT INTO adverts (user_id, advert_title, advert_content, advert_photo) VALUES (@user_id, @advert_title, @advert_content, @advert_photo)";
 
-        SqlCommand command = new SqlCommand();        command.Connection = connection;        command.CommandText = query;        command.Parameters.AddWithValue("@user_id", 1);        command.Parameters.AddWithValue("@advert_title", txtTitle.Text);        command.Parameters.AddWithValue("@advert_content", tbContent.Text);        command.Parameters.AddWithValue("@advert_photo", fuImage.FileBytes);
+        SqlCommand command = new SqlCommand();
+        command.Connection = connection;
+        command.CommandText = query;
+
+        command.Parameters.AddWithValue("@user_id", 1);
+        command.Parameters.AddWithValue("@advert_title", txtTitle.Text);
+        command.Parameters.AddWithValue("@advert_content", tbContent.Text);
+        command.Parameters.AddWithValue("@advert_photo", fuImage.FileBytes);
 
         try
         {
