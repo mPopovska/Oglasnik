@@ -33,7 +33,7 @@ public partial class _Default : System.Web.UI.Page
                 Label lblContent = new Label();
                 lblContent.Text = content;
                 Image img = new Image();
-                img.ImageUrl = Image1.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
+                img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                 xmlGeneratedContent.Controls.Add(lblTitle);
                 xmlGeneratedContent.Controls.Add(lblContent);
                 xmlGeneratedContent.Controls.Add(img);
