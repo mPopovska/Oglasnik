@@ -10,7 +10,7 @@
     </style-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div id="loginForm">
+    <div id="loginForm" class="form-horizontal">
         <fieldset>
             <legend>Најава</legend>
             <div class="form-group">

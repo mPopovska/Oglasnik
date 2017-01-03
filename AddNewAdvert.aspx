@@ -11,7 +11,7 @@
     </style-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div id="newAdvertForm">
+    <div id="newAdvertForm" class="form-horizontal">
         <fieldset>
                 <legend>Додади нов оглас</legend>
                 <div class="form-group">
