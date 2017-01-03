@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
@@ -24,6 +25,7 @@ public partial class _Default : System.Web.UI.Page
         {
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
+            int i = 1;
             while (reader.Read())
             {
                 string title = reader["advert_title"].ToString();
@@ -34,9 +36,22 @@ public partial class _Default : System.Web.UI.Page
                 lblContent.Text = content;
                 Image img = new Image();
                 img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
-                xmlGeneratedContent.Controls.Add(lblTitle);
-                xmlGeneratedContent.Controls.Add(lblContent);
-                xmlGeneratedContent.Controls.Add(img);
+                img.Width = 300;
+                img.Height = 250;
+
+                HtmlGenericControl newDiv = new HtmlGenericControl("DIV");
+                newDiv.ID = " col-lg-3 div" + i;
+
+                newDiv.Controls.Add(lblTitle);
+                newDiv.Controls.Add(new LiteralControl("<br />"));
+                newDiv.Controls.Add(lblContent);
+                newDiv.Controls.Add(new LiteralControl("<br />"));
+                newDiv.Controls.Add(img);
+
+                xmlGeneratedContent.Controls.Add(newDiv);
+                xmlGeneratedContent.ID = "row";
+
+                i++;
             }
 
         }
