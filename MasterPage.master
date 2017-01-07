@@ -1,5 +1,12 @@
 ﻿
 <!DOCTYPE html>
+<script runat="server">
+
+    Protected Sub Logout_Click(sender As Object, e As EventArgs)
+
+    End Sub
+</script>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -11,9 +18,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -50,13 +54,20 @@
                             <button type="submit" class="btn btn-default">Submit</button>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
+                            <li><a href="?logout=1">Link</a></li>
+                            <!--li>
+                                <asp:Button ID="Logout" runat="server" Text="Одјави се" OnClick="Logout_Click" />
+
+                            </li-->
                         </ul>
                     </div>
                 </div>
 
             </nav>
-        </div>
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
     </form>
 </body>
 </html>

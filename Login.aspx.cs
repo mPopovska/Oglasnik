@@ -28,7 +28,7 @@ public partial class Login : System.Web.UI.Page
         SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
 
         try
-        {
+        {       
             connection.Open();
             SqlDataReader reader = selectCommand.ExecuteReader();
 
@@ -42,7 +42,20 @@ public partial class Login : System.Web.UI.Page
                 lblError.Text += reader["username"].ToString() + " ";
                 lblError.Text += reader["password"].ToString();
 
-                Response.Redirect("~/Default.aspx");
+                HttpCookie cookie = new HttpCookie("user");
+                cookie["username"] = reader["username"].ToString();
+                cookie["id"] = reader["id"].ToString();
+                cookie.Expires = DateTime.Now.AddHours(1);
+                Response.Cookies.Add(cookie);
+
+                if (reader["username"].ToString() == "admin")
+                {
+                    Response.Redirect("~/AdminDefault.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
             {

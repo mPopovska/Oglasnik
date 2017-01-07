@@ -8,13 +8,12 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class AdminDefault : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
         HttpCookie cookie = Request.Cookies["user"];
-        if(cookie == null)
+        if (cookie == null)
         {
             Response.Redirect("~/Login.aspx");
         }
@@ -23,6 +22,10 @@ public partial class _Default : System.Web.UI.Page
             cookie.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(cookie);
             Response.Redirect("~/Login.aspx");
+        }
+        if (cookie["username"] != "admin")
+        {
+            Response.Redirect("~/Default.aspx");
         }
         SqlConnection connection = new SqlConnection();
         connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
@@ -62,13 +65,13 @@ public partial class _Default : System.Web.UI.Page
                 newDiv.Controls.Add(img);
 
                 xmlGeneratedContent.Controls.Add(newDiv);
-                
+
 
                 i++;
             }
 
         }
-        catch(Exception err)
+        catch (Exception err)
         {
             lblerror.Text = err.Message;
         }

@@ -11,7 +11,11 @@ public partial class Signup : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        HttpCookie cookie = Request.Cookies["user"];
+        if (cookie != null)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 
     protected void btnSignin_Click(object sender, EventArgs e)
@@ -42,7 +46,7 @@ public partial class Signup : System.Web.UI.Page
                 }
             }
 
-            reader.Close();
+            
 
             if(!error)
             {
@@ -54,8 +58,14 @@ public partial class Signup : System.Web.UI.Page
                 insertCommand.ExecuteNonQuery();
                 lblError.Text = "";
 
+                HttpCookie cookie = new HttpCookie("user");
+                cookie["username"] = reader["username"].ToString();
+                cookie.Expires = DateTime.Now.AddHours(1);
+                Response.Cookies.Add(cookie);
+
                 Response.Redirect("~/Default.aspx");
             }
+            reader.Close();
         }
         catch (Exception err)
         {

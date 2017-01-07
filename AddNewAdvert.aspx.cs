@@ -11,7 +11,11 @@ public partial class AddNewAdvert : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        HttpCookie cookie = Request.Cookies["user"];
+        if(cookie == null)
+        {
+            Response.Redirect("~/Login.aspx");
+        }
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -25,7 +29,9 @@ public partial class AddNewAdvert : System.Web.UI.Page
         command.Connection = connection;
         command.CommandText = query;
 
-        command.Parameters.AddWithValue("@user_id", 1);
+        HttpCookie cookie = Request.Cookies["user"];
+
+        command.Parameters.AddWithValue("@user_id", cookie["id"]);
         command.Parameters.AddWithValue("@advert_title", txtTitle.Text);
         command.Parameters.AddWithValue("@advert_content", tbContent.Text);
         command.Parameters.AddWithValue("@advert_photo", fuImage.FileBytes);
