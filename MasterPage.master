@@ -54,11 +54,7 @@
                             <button type="submit" class="btn btn-default">Submit</button>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="?logout=1">Link</a></li>
-                            <!--li>
-                                <asp:Button ID="Logout" runat="server" Text="Одјави се" OnClick="Logout_Click" />
-
-                            </li-->
+                            <li><a href="?logout=1">Logout</a></li>
                         </ul>
                     </div>
                 </div>
