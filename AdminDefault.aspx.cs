@@ -30,7 +30,7 @@ public partial class AdminDefault : System.Web.UI.Page
         SqlConnection connection = new SqlConnection();
         connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
 
-        string query = "SELECT * FROM adverts";
+        string query = "SELECT * FROM adverts WHERE approved=0";
 
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
@@ -46,8 +46,12 @@ public partial class AdminDefault : System.Web.UI.Page
             {
                 string title = reader["advert_title"].ToString();
                 string content = reader["advert_content"].ToString();
-                Label lblTitle = new Label();
-                lblTitle.Text = title;
+                //Label lblTitle = new Label();
+                //lblTitle.Text = title;
+                LinkButton aTitle = new LinkButton();
+                aTitle.Text = title;
+                aTitle.Attributes["href"] = "AdminDetails.aspx?id=" + reader["advert_id"];
+                //lblTitle.Attributes["href"] = "~/AdminDetails.aspx?id='" + reader["advert_id"] + "'"; 
                 Label lblContent = new Label();
                 lblContent.Text = content;
                 Image img = new Image();
@@ -58,7 +62,7 @@ public partial class AdminDefault : System.Web.UI.Page
                 newDiv.ID = " col-md-3 div" + i;
                 newDiv.Attributes["class"] = "col-md-3";
 
-                newDiv.Controls.Add(lblTitle);
+                newDiv.Controls.Add(aTitle);
                 newDiv.Controls.Add(new LiteralControl("<br />"));
                 newDiv.Controls.Add(lblContent);
                 newDiv.Controls.Add(new LiteralControl("<br />"));

@@ -27,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
         SqlConnection connection = new SqlConnection();
         connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
 
-        string query = "SELECT * FROM adverts";
+        string query = "SELECT * FROM adverts WHERE approved=1";
 
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
