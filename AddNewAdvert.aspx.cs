@@ -40,6 +40,7 @@ public partial class AddNewAdvert : System.Web.UI.Page
         {
             connection.Open();
             command.ExecuteNonQuery();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "alert('Your advert is added successfully. Our team will contact you within 24 hours via email')", true);
         }
         catch (Exception err)
         {

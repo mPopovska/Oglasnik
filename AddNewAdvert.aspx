@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AddNewAdvert.aspx.cs" Inherits="AddNewAdvert" %>
 
 <asp:Content ID="AddNewAdvertFormContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    
+ 
     <div id="newAdvertForm" class="form-horizontal container">
         <fieldset>
             <legend>Додади нов оглас</legend>
