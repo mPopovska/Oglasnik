@@ -77,8 +77,8 @@ public partial class AdminDetails : System.Web.UI.Page
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add("mateapopovska@gmail.com");
             mailMessage.From = new MailAddress("mateapopovska@gmail.com");
-            mailMessage.Subject = "Advert response";
-            mailMessage.Body = "Hello world,\n\nYour advert has been deleted!";
+            mailMessage.Subject = "ФИНКИ Огласник";
+            mailMessage.Body = "Почитуван кориснику,\n\nВашиот оглас е избришан!\n\nВаш,\nФИНКИ Огласник";
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.EnableSsl = true;
             smtpClient.Credentials = new System.Net.NetworkCredential("mateapopovska@gmail.com", "");
@@ -116,8 +116,8 @@ public partial class AdminDetails : System.Web.UI.Page
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add("mateapopovska@gmail.com");
             mailMessage.From = new MailAddress("mateapopovska@gmail.com");
-            mailMessage.Subject = "Advert response";
-            mailMessage.Body = "Hello world,\n\nYour advert has been approved!";
+            mailMessage.Subject = "ФИНКИ Огласник";
+            mailMessage.Body = "Почитуван кориснику,\n\nВашиот оглас е одобрен!\n\nВаш,\nФИНКИ Огласник";
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.EnableSsl = true;
             smtpClient.Credentials = new System.Net.NetworkCredential("mateapopovska@gmail.com", "");
