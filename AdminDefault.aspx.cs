@@ -49,7 +49,7 @@ public partial class AdminDefault : System.Web.UI.Page
                 //Label lblTitle = new Label();
                 //lblTitle.Text = title;
                 LinkButton aTitle = new LinkButton();
-                aTitle.Text = title;
+                aTitle.Text = "<h3>" + title + "</h3>";
                 aTitle.Attributes["href"] = "AdminDetails.aspx?id=" + reader["advert_id"];
                 //lblTitle.Attributes["href"] = "~/AdminDetails.aspx?id='" + reader["advert_id"] + "'"; 
                 Label lblContent = new Label();

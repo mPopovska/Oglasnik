@@ -43,8 +43,9 @@ public partial class _Default : System.Web.UI.Page
             {
                 string title = reader["advert_title"].ToString();
                 string content = reader["advert_content"].ToString();
-                HtmlGenericControl h3Title = new HtmlGenericControl("h3");
-                h3Title.InnerHtml = title;
+                LinkButton aTitle = new LinkButton();
+                aTitle.Text = "<h3>" + title + "</h3>";
+                aTitle.Attributes["href"] = "Details.aspx?id=" + reader["advert_id"];
                 Label lblContent = new Label();
                 lblContent.Text = content;
                 Image img = new Image();
@@ -60,7 +61,7 @@ public partial class _Default : System.Web.UI.Page
                 jumbotron.Attributes["margin"] = "2px";
                 jumbotron.Attributes["padding"] = "2px";
 
-                jumbotron.Controls.Add(h3Title);
+                jumbotron.Controls.Add(aTitle);
                 jumbotron.Controls.Add(new LiteralControl("<br />"));
                 jumbotron.Controls.Add(lblContent);
                 jumbotron.Controls.Add(new LiteralControl("<br />"));
