@@ -43,8 +43,8 @@ public partial class _Default : System.Web.UI.Page
             {
                 string title = reader["advert_title"].ToString();
                 string content = reader["advert_content"].ToString();
-                Label lblTitle = new Label();
-                lblTitle.Text = title;
+                HtmlGenericControl h3Title = new HtmlGenericControl("h3");
+                h3Title.InnerHtml = title;
                 Label lblContent = new Label();
                 lblContent.Text = content;
                 Image img = new Image();
@@ -52,14 +52,21 @@ public partial class _Default : System.Web.UI.Page
                 img.Attributes["class"] = "img-responsive";
 
                 HtmlGenericControl newDiv = new HtmlGenericControl("DIV");
-                newDiv.ID = " col-md-3 div" + i;
-                newDiv.Attributes["class"] = "col-md-3";
+                newDiv.ID = " div" + i;
+                newDiv.Attributes["class"] = "col-md-4";
 
-                newDiv.Controls.Add(lblTitle);
-                newDiv.Controls.Add(new LiteralControl("<br />"));
-                newDiv.Controls.Add(lblContent);
-                newDiv.Controls.Add(new LiteralControl("<br />"));
-                newDiv.Controls.Add(img);
+                HtmlGenericControl jumbotron = new HtmlGenericControl("DIV");
+                jumbotron.Attributes["class"] = "jumbotron";
+                jumbotron.Attributes["margin"] = "2px";
+                jumbotron.Attributes["padding"] = "2px";
+
+                jumbotron.Controls.Add(h3Title);
+                jumbotron.Controls.Add(new LiteralControl("<br />"));
+                jumbotron.Controls.Add(lblContent);
+                jumbotron.Controls.Add(new LiteralControl("<br />"));
+                jumbotron.Controls.Add(img);
+
+                newDiv.Controls.Add(jumbotron);
 
                 xmlGeneratedContent.Controls.Add(newDiv);
                 

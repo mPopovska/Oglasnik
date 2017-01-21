@@ -59,14 +59,21 @@ public partial class AdminDefault : System.Web.UI.Page
                 img.Attributes["class"] = "img-responsive";
 
                 HtmlGenericControl newDiv = new HtmlGenericControl("DIV");
-                newDiv.ID = " col-md-3 div" + i;
-                newDiv.Attributes["class"] = "col-md-3";
+                newDiv.ID = " col-md-4 div" + i;
+                newDiv.Attributes["class"] = "col-md-4";
 
-                newDiv.Controls.Add(aTitle);
-                newDiv.Controls.Add(new LiteralControl("<br />"));
-                newDiv.Controls.Add(lblContent);
-                newDiv.Controls.Add(new LiteralControl("<br />"));
-                newDiv.Controls.Add(img);
+                HtmlGenericControl jumbotron = new HtmlGenericControl("DIV");
+                jumbotron.Attributes["class"] = "jumbotron";
+                jumbotron.Attributes["margin"] = "2px";
+                jumbotron.Attributes["padding"] = "2px";
+
+                jumbotron.Controls.Add(aTitle);
+                jumbotron.Controls.Add(new LiteralControl("<br />"));
+                jumbotron.Controls.Add(lblContent);
+                jumbotron.Controls.Add(new LiteralControl("<br />"));
+                jumbotron.Controls.Add(img);
+
+                newDiv.Controls.Add(jumbotron);
 
                 xmlGeneratedContent.Controls.Add(newDiv);
 
