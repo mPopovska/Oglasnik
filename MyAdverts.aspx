@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MyAdverts.aspx.cs" Inherits="MyAdverts" %>
+
+<%-- Add content controls here --%>
 
 <asp:Content ID="CategoryPlaceHolder" ContentPlaceHolderID="CategoryPlaceHolder" runat="server">
     <asp:DropDownList ID="ddlCategory" runat="server" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
@@ -18,4 +20,3 @@
     </div>  
     <asp:Label ID="lblerror" runat="server" Text=""></asp:Label>
 </asp:Content>
-

@@ -23,7 +23,7 @@ public partial class AddNewAdvert : System.Web.UI.Page
         SqlConnection connection = new SqlConnection();
         connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
 
-        string query = "INSERT INTO adverts (user_id, advert_title, advert_content, advert_photo) VALUES (@user_id, @advert_title, @advert_content, @advert_photo)";
+        string query = "INSERT INTO adverts (user_id, advert_title, advert_content, advert_photo, advert_category) VALUES (@user_id, @advert_title, @advert_content, @advert_photo, @advert_category)";
 
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
@@ -35,6 +35,7 @@ public partial class AddNewAdvert : System.Web.UI.Page
         command.Parameters.AddWithValue("@advert_title", txtTitle.Text);
         command.Parameters.AddWithValue("@advert_content", tbContent.Text);
         command.Parameters.AddWithValue("@advert_photo", fuImage.FileBytes);
+        command.Parameters.AddWithValue("@advert_category", ddlCategory.SelectedValue);
 
         try
         {

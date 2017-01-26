@@ -8,6 +8,23 @@
 
             <div class="row">
                 <div class="form-group">
+                    <label for="txtCategory" class="col-lg-2 control-label">Категорија</label>
+                    <div class="col-lg-10">
+                        <asp:DropDownList ID="ddlCategory" runat="server">
+                            <asp:ListItem Value="avtomobili">Компјутери</asp:ListItem>
+                            <asp:ListItem Value="kompjuteri">Автомобили</asp:ListItem>
+                            <asp:ListItem Value="televizori">Мобилни телефони</asp:ListItem>
+                            <asp:ListItem Value="mobilni_telefoni">Телевизори</asp:ListItem>
+                            <asp:ListItem Value="bela_tehnika">Компјутерска опрема</asp:ListItem>
+                            <asp:ListItem Value="kompjuterska_oprema">Бела техника</asp:ListItem>
+                            <asp:ListItem Value="ostanato">Останато</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
                     <label for="txtTitle" class="col-lg-2 control-label">Наслов</label>
                     <div class="col-lg-10">
                         <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
