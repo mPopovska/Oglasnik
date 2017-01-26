@@ -32,7 +32,7 @@ public partial class AddNewAdvert : System.Web.UI.Page
         HttpCookie cookie = Request.Cookies["user"];
 
         command.Parameters.AddWithValue("@user_id", cookie["id"]);
-        command.Parameters.AddWithValue("@advert_title", txtTitle.Text);
+        command.Parameters.AddWithValue("@advert_title", tbTitle.Text);
         command.Parameters.AddWithValue("@advert_content", tbContent.Text);
         command.Parameters.AddWithValue("@advert_photo", fuImage.FileBytes);
         command.Parameters.AddWithValue("@advert_category", ddlCategory.SelectedValue);
@@ -42,6 +42,7 @@ public partial class AddNewAdvert : System.Web.UI.Page
             connection.Open();
             command.ExecuteNonQuery();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "alert('Вашиот оглас е успешно додаден! Нашиот тим ќе Ве контактира за статусот на Вашиот оглас преку е-маил во рок од 24 часа.')", true);
+            
         }
         catch (Exception err)
         {
@@ -51,5 +52,8 @@ public partial class AddNewAdvert : System.Web.UI.Page
         {
             connection.Close();
         }
+
+        tbTitle.Text = "";
+        tbContent.Text = "";
     }
 }

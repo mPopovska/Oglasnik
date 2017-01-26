@@ -12,6 +12,7 @@ public partial class EditAdvert : System.Web.UI.Page
 {
     public TextBox tbTitle;
     public TextBox tbContent;
+    public Image img;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -44,7 +45,7 @@ public partial class EditAdvert : System.Web.UI.Page
                 tbContent.Height = 200;
                 tbContent.Text = content;
                 tbContent.Attributes["class"] = "tbContent_margin";
-                Image img = new Image();
+                img = new Image();
                 img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                 img.Attributes["class"] = "img-responsive";
                 img.Attributes["class"] = "img_maring";
@@ -74,11 +75,27 @@ public partial class EditAdvert : System.Web.UI.Page
         SqlConnection connection = new SqlConnection();
         connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
 
-        string query = "UPDATE adverts set advert_title=@advert_title, advert_content=@advert_content WHERE advert_id='" + Request.QueryString["id"].ToString() + "'";
+        string query;
+
+        if(newImage.Visible)
+        {
+            query = "UPDATE adverts set advert_title=@advert_title, advert_content=@advert_content, advert_photo=@advert_photo WHERE advert_id='" + Request.QueryString["id"].ToString() + "'";
+        }
+        else
+        {
+            query = "UPDATE adverts set advert_title=@advert_title, advert_content=@advert_content WHERE advert_id='" + Request.QueryString["id"].ToString() + "'";
+
+        }
 
         SqlCommand command = new SqlCommand();
         command.Parameters.AddWithValue("@advert_title", tbTitle.Text);
         command.Parameters.AddWithValue("@advert_content", tbContent.Text);
+
+        if(newImage.Visible)
+        {
+            command.Parameters.AddWithValue("@advert_photo", newImage.FileBytes);
+        }
+        
         command.Connection = connection;
         command.CommandText = query;
 
@@ -106,7 +123,10 @@ public partial class EditAdvert : System.Web.UI.Page
         {
             connection.Close();
         }
-        Response.Redirect("~/AdminDefault.aspx");
+
+        img.Visible = true;
+        newImage.Visible = false;
+        Response.Redirect("~/MyAdverts.aspx");
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
@@ -146,5 +166,11 @@ public partial class EditAdvert : System.Web.UI.Page
             connection.Close();
         }
         Response.Redirect("~/AdminDefault.aspx");
+    }
+
+    protected void btnChangeImage_Click(object sender, EventArgs e)
+    {
+        img.Visible = false;
+        newImage.Visible = true;
     }
 }

@@ -25,9 +25,9 @@
 
             <div class="row">
                 <div class="form-group">
-                    <label for="txtTitle" class="col-lg-2 control-label">Наслов</label>
+                    <label for="tbTitle" class="col-lg-2 control-label">Наслов</label>
                     <div class="col-lg-10">
-                        <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbTitle" runat="server"></asp:TextBox>
                     </div>
                 </div>
             </div>
