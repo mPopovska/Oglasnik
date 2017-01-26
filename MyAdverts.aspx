@@ -3,7 +3,7 @@
 <%-- Add content controls here --%>
 
 <asp:Content ID="CategoryPlaceHolder" ContentPlaceHolderID="CategoryPlaceHolder" runat="server">
-    <asp:DropDownList ID="ddlCategory" runat="server" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
+    <asp:DropDownList ID="ddlCategory" runat="server" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged" CssClass="ddl_margin">
         <asp:ListItem Value="avtomobili">Компјутери</asp:ListItem>
         <asp:ListItem Value="kompjuteri">Автомобили</asp:ListItem>
         <asp:ListItem Value="televizori">Мобилни телефони</asp:ListItem>

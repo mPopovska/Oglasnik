@@ -53,7 +53,7 @@ public partial class _Default : System.Web.UI.Page
                     aTitle.Text = "<h3>" + title + "</h3>";
                     aTitle.Attributes["href"] = "Details.aspx?id=" + reader["advert_id"];
                     Label lblContent = new Label();
-                    lblContent.Text = content;
+                    lblContent.Text = content.Substring(0, Math.Min(content.Length, 100)) + " ... <br/>";
                     Image img = new Image();
                     img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                     img.Attributes["class"] = "img-responsive";
@@ -123,7 +123,7 @@ public partial class _Default : System.Web.UI.Page
                 aTitle.Text = "<h3>" + title + "</h3>";
                 aTitle.Attributes["href"] = "Details.aspx?id=" + reader["advert_id"];
                 Label lblContent = new Label();
-                lblContent.Text = content;
+                lblContent.Text = content.Substring(0, Math.Min(content.Length, 100)) + " ... <br/>"; ;
                 Image img = new Image();
                 img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                 img.Attributes["class"] = "img-responsive";

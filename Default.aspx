@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="CategoryPlaceHolder" ContentPlaceHolderID="CategoryPlaceHolder" runat="server">
-    <asp:DropDownList ID="ddlCategory" runat="server" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged" AutoPostBack="True" CssClass="dropdown-toggle">
+    <asp:DropDownList ID="ddlCategory" runat="server" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged" AutoPostBack="True" CssClass="ddl_margin">
         <asp:ListItem Value="avtomobili">Компјутери</asp:ListItem>
         <asp:ListItem Value="kompjuteri">Автомобили</asp:ListItem>
         <asp:ListItem Value="televizori">Мобилни телефони</asp:ListItem>

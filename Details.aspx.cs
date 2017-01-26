@@ -40,9 +40,9 @@ public partial class Details : System.Web.UI.Page
                 string title = reader["advert_title"].ToString();
                 string content = reader["advert_content"].ToString();
                 Label lblTitle = new Label();
-                lblTitle.Text = title;
+                lblTitle.Text = "<h3>" + title + "</h3>";
                 Label lblContent = new Label();
-                lblContent.Text = content;
+                lblContent.Text = content + "<br/>";
                 Image img = new Image();
                 img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                 img.Attributes["class"] = "img-responsive";

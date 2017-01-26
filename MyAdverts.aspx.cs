@@ -48,7 +48,7 @@ public partial class MyAdverts : System.Web.UI.Page
                     aTitle.Text = "<h3>" + title + "</h3>";
                     aTitle.Attributes["href"] = "EditAdvert.aspx?id=" + reader["advert_id"];
                     Label lblContent = new Label();
-                    lblContent.Text = content;
+                    lblContent.Text = content.Substring(0, Math.Min(content.Length, 100)) + " ... <br/>";
                     Image img = new Image();
                     img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                     img.Attributes["class"] = "img-responsive";
@@ -86,6 +86,67 @@ public partial class MyAdverts : System.Web.UI.Page
 
     protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
     {
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
+        string query;
+        if (ddlCategory.SelectedValue != "site")
+        {
+            query = "SELECT * FROM adverts WHERE approved=1 AND advert_category='" + ddlCategory.SelectedValue + "'";
+        }
+        else
+        {
+            query = "SELECT * FROM adverts WHERE approved=1";
+        }
 
+        SqlCommand command = new SqlCommand();
+        command.Connection = connection;
+        command.CommandText = query;
+
+        try
+        {
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            int i = 1;
+            xmlGeneratedContent.Attributes["class"] = "row";
+            while (reader.Read())
+            {
+                string title = reader["advert_title"].ToString();
+                string content = reader["advert_content"].ToString();
+                LinkButton aTitle = new LinkButton();
+                aTitle.Text = "<h3>" + title + "</h3>";
+                aTitle.Attributes["href"] = "Details.aspx?id=" + reader["advert_id"];
+                Label lblContent = new Label();
+                lblContent.Text = content.Substring(0, Math.Min(content.Length, 100)) + " ... <br/>"; ;
+                Image img = new Image();
+                img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
+                img.Attributes["class"] = "img-responsive";
+
+                HtmlGenericControl newDiv = new HtmlGenericControl("DIV");
+                newDiv.ID = " div" + i;
+                newDiv.Attributes["class"] = "col-md-4";
+
+                HtmlGenericControl jumbotron = new HtmlGenericControl("DIV");
+                jumbotron.Attributes["class"] = "jumbotron";
+                jumbotron.Attributes["margin"] = "2px";
+                jumbotron.Attributes["padding"] = "2px";
+
+                jumbotron.Controls.Add(aTitle);
+                jumbotron.Controls.Add(new LiteralControl("<br />"));
+                jumbotron.Controls.Add(lblContent);
+                jumbotron.Controls.Add(new LiteralControl("<br />"));
+                jumbotron.Controls.Add(img);
+
+                newDiv.Controls.Add(jumbotron);
+
+                xmlGeneratedContent.Controls.Add(newDiv);
+
+                i++;
+            }
+
+        }
+        catch (Exception err)
+        {
+            lblerror.Text = err.Message;
+        }
     }
 }

@@ -36,12 +36,18 @@ public partial class EditAdvert : System.Web.UI.Page
                 //lblTitle.Text = title;
                 tbTitle = new TextBox();
                 tbTitle.Text = title;
+                tbTitle.Width = 400;
+                tbTitle.Attributes["class"] = "tbTitle_margin";
                 tbContent = new TextBox();
                 tbContent.TextMode = TextBoxMode.MultiLine;
+                tbContent.Width = 400;
+                tbContent.Height = 200;
                 tbContent.Text = content;
+                tbContent.Attributes["class"] = "tbContent_margin";
                 Image img = new Image();
                 img.ImageUrl = "~/ImageHandler.ashx?id=" + reader["advert_id"].ToString();
                 img.Attributes["class"] = "img-responsive";
+                img.Attributes["class"] = "img_maring";
 
                 //HtmlGenericControl newDiv = new HtmlGenericControl("DIV");
                 //newDiv.ID = " col-md-12";

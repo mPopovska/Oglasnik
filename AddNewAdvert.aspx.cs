@@ -41,7 +41,7 @@ public partial class AddNewAdvert : System.Web.UI.Page
         {
             connection.Open();
             command.ExecuteNonQuery();
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "alert('Your advert is added successfully. Our team will contact you within 24 hours via email')", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "alert('Вашиот оглас е успешно додаден! Нашиот тим ќе Ве контактира за статусот на Вашиот оглас преку е-маил во рок од 24 часа.')", true);
         }
         catch (Exception err)
         {
