@@ -18,6 +18,10 @@ public partial class _Default : System.Web.UI.Page
         {
             Response.Redirect("~/Login.aspx");
         }
+        if(cookie["username"] == "admin")
+        {
+            Response.Redirect("~/AdminDefault.aspx");
+        }
         if (Request.QueryString["logout"] == "1")
         {
             cookie.Expires = DateTime.Now.AddDays(-1);

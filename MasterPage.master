@@ -59,7 +59,7 @@
                             <button type="submit" class="btn btn-default">Submit</button>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/Default.aspx?logout=1">Одјави се</a></li>
+                            <li><a href="/MyAdverts.aspx?logout=1">Одјави се</a></li>
                         </ul>
                     </div>
                 </div>

@@ -46,7 +46,7 @@ public partial class MyAdverts : System.Web.UI.Page
                     string content = reader["advert_content"].ToString();
                     LinkButton aTitle = new LinkButton();
                     aTitle.Text = "<h3>" + title + "</h3>";
-                    aTitle.Attributes["href"] = "Details.aspx?id=" + reader["advert_id"];
+                    aTitle.Attributes["href"] = "EditAdvert.aspx?id=" + reader["advert_id"];
                     Label lblContent = new Label();
                     lblContent.Text = content;
                     Image img = new Image();
